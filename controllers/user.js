@@ -3,6 +3,15 @@ import userModel from "../models/user.js";
 import errorHandler from "../utils/error.js";
 
 const userController = {
+  getUsers: async (req, res, next) => {
+    try {
+      const user = await userModel.find(req.params.id);
+
+      return res.status(200).json({ user });
+    } catch (error) {
+      next(error);
+    }
+  },
   getUser: async (req, res) => {
     try {
       const user = await userModel.findById(req.params.id);
