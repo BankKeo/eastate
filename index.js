@@ -20,6 +20,7 @@ app.use(express.json());
 
 app.use("/api", userRouter);
 app.use("/api", authRouter);
+app.use("/", (req, res) => res.send("Hello"));
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
